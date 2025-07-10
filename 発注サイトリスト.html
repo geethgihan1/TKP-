@@ -1,0 +1,783 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Item List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-image: url('https://images.hdqwalls.com/download/white-polygon-abstract-4k-gf-3840x2160.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        h1 {
+            text-align: center;
+            color: #1a5276;
+            font-size: 4em;
+            -webkit-text-stroke: 1px #b3ffff;
+            text-shadow: 2px 2px 2px #3498db;
+        }
+
+        .category-bar {
+            display: flex;
+            justify-content: space-around;
+            background-color: #3498db;
+            padding: 10px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .category {
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .category:hover {
+            background-color: #2980b9;
+        }
+
+        .item-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 80px; /* Adjusted margin to accommodate the footer height */
+        }
+
+        .item {
+            width: 20%;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+            transition: transform 0.3s ease-in-out;
+            background-color: white;
+        }
+
+        .item:hover {
+            transform: scale(1.05);
+        }
+
+        img {
+            width: 15%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 5px;
+        }
+
+        .item-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .item-link {
+            color: #3498db;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 5px;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .item-link:hover {
+            color: #2980b9;
+        }
+
+        .item-count {
+            font-size: 14px;
+            color: #555;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #3498db;
+            color: white;
+            text-align: center;
+            padding: 1px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="category-bar">
+        <div class="category" onclick="showCategory('coffee')">コーヒー</div>
+        <div class="category" onclick="showCategory('skincare')">スキンケア</div>
+        <div class="category" onclick="showCategory('amenity')">アメニティ</div>
+		<div class="category" onclick="showCategory('ゴミ袋')">ゴミ袋</div>
+		<div class="category" onclick="showCategory('客室用')">客室用</div>
+		<div class="category" onclick="showCategory('その他')">その他</div>
+    </div>
+
+    <h1>コーヒーコーナー</h1>
+    
+    <div class="item-list" id="coffee-items">
+        <!-- Item 1 -->
+        <div class="item">
+            <img src="https://m.media-amazon.com/images/I/31qAQMWn3hL._AC_UF1000,1000_QL80_.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ミルク【ＵＣＣ(株) 】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?2" class="item-link" target="_blank">UCCカフェプラス　プロメッソディスペンサー用１．４L</a>
+                <div class="item-count">1．4L・4／個　4,200円</div>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="item">
+            <img src="https://www.ucc.co.jp/promesso/img/packs-ph-11.png" alt="Item 2 Image">
+            <div class="item-details">
+                <div class="item-name">コーヒー【ＵＣＣ(株) 】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?2" class="item-link" target="_blank">プロメッソコーヒー　クラシック　１．４Ｌ</a>
+                <div class="item-count">1．4L・2／C/S　14,000円</div>
+            </div>
+        </div>
+        
+        <!-- Item 3 -->
+        <div class="item">
+            <img src="https://askul.c.yimg.jp/img/product/3L3/P227467_3L3.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">コーヒーカップ【ＵＣＣ(株) 】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?2" class="item-link" target="_blank">ＵＣＣ　９オンス　断熱カップ５０個入り</a>
+                <div class="item-count">20／個　410円</div>
+            </div>
+        </div>
+
+	<!-- Item 4 -->
+        <div class="item">
+            <img src="https://jp.images-monotaro.com/Monotaro3/pi/full/mono15625900-230127-02.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">コーヒー蓋【ＵＣＣ(株) 】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?2" class="item-link" target="_blank">日本デキシー　９オンス断熱カップ用リッド（蓋）　５０個</a>
+                <div class="item-count">50個・50　495円</div>
+            </div>
+        </div>
+
+	<!-- Item 5 -->
+        <div class="item">
+            <img src="https://www.kaunet.com/images/goods/option/extra/KA602748.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">シュガー【ＵＣＣ(株) 】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?2" class="item-link" target="_blank">UCCチェスメイトシュガ－（N）3ｇ×300P</a>
+                <div class="item-count">6／箱　570円</div>
+            </div>
+        </div>
+
+	<!-- Item 6 -->
+        <div class="item">
+            <img src="https://makeshop-multi-images.akamaized.net/vivahome/itemimages/000000011399_TtmOIPF.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">マドラー【ＵＣＣ(株) 】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?2" class="item-link" target="_blank">ＵＣＣマドラー　100ｍｍ　１００入</a>
+                <div class="item-count">100入・100／C/S　180円</div>
+            </div>
+        </div>
+
+	<!-- Item 7 -->
+        <div class="item">
+            <img src="https://anamall.ana.co.jp/contents/0008/img/goods/1/0008-FG000008819991.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">スティックコーヒー【ＵＣＣ(株) 】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?2" class="item-link" target="_blank">ＵＣＣ　ＩＣザ・ブレンド１１７　ＳＴ１０００Ｐ（Ｎ）</a>
+                <div class="item-count">1000P・1／C/S　10,825円</div>
+            </div>
+        </div>
+
+	<!-- Item 8 -->
+        <div class="item">
+            <img src="https://tshop.r10s.jp/kaumall/cabinet/500_301/a9260972sl.jpg?fitin=720%3A720" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">スティックミルク【ＵＣＣ(株) 】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?2" class="item-link" target="_blank">ＵＣＣ　カフェプラス　ＳＴ　１０００Ｐ（Ｎ）</a>
+                <div class="item-count">1000P・1／C/S　6,540円</div>
+            </div>
+        </div>
+
+	<!-- Item 9 -->
+        <div class="item">
+            <img src="https://images-fe.ssl-images-amazon.com/images/I/7128zSf2iYL._AC_UL600_SR600,600_.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">洗浄剤【ＵＣＣ(株) 】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?2" class="item-link" target="_blank">ＣＦ　ＲＩＮＺＡタブレット洗浄剤　５５１１５５７３</a>
+                <div class="item-count">1C/S　5,880円</div>
+            </div>
+        </div>
+
+	<!-- Item 10 -->
+        <div class="item">
+            <img src="https://askul.c.yimg.jp/img/product/3L2/5383236_3L2.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">日東紅茶【ASKUL】</div>
+                <a href="https://solution.soloel.com/p/373470/" class="item-link" target="_blank">日東紅茶 デイ＆デイ ティーバッグ 1セット</a>
+                <div class="item-count">1箱（100バッグ入）696円</div>
+            </div>
+        </div>
+
+	<!-- Item 11 -->
+        <div class="item">
+            <img src="https://shop.r10s.jp/mine-amenity/cabinet/200929shohin/01840023.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">緑茶【パーチェスワン】</div>
+                <a href="https://catalog.purchaseone.jp/catalog/ProductDetail.aspx?SupplierCompanyId=4422&CatalogId=231&PriceId=14001809&MakerModelID=&IsFromMyCatalog=True&ProductCD=FJH-1041&SnapShotProductID=4416501&ItemId=4847818" class="item-link" target="_blank">緑茶（匠味茶房・粉末）/FJH</a>
+                <div class="item-count">1900 個  8,132円</div>
+            </div>
+        </div>
+
+	<!-- Item 12 -->
+        <div class="item">
+            <img src="https://tshop.r10s.jp/mine-amenity/cabinet/200929shohin/01840024.jpg?fitin=720%3A720" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ほうじ茶【パーチェスワン】</div>
+                <a href="https://catalog.purchaseone.jp/catalog/ProductDetail.aspx?SupplierCompanyId=4422&CatalogId=231&PriceId=14001810&MakerModelID=&IsFromMyCatalog=True&ProductCD=FJH-1042&SnapShotProductID=4416502&ItemId=4847819"  class="item-link" target="_blank">ほうじ茶（匠味茶房・粉末）/FJH</a>
+                <div class="item-count">1900 個 8,742円</div>
+            </div>
+        </div>
+
+	<!-- Item 13 -->
+        <div class="item">
+            <img src="https://imagedelivery.net/QondspN4HIUvB_R16-ddAQ/60fe56d105362407e223406c/24cf4587516e4d231232.jpg/fit=scale-down,w=1200" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ＴＫＰ コーヒー【キーコーヒー(株)】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?27&ordertype=1#"  class="item-link" target="_blank">ＴＫＰ　オリジナルブレンド</a>
+                <div class="item-count">7．5GX300・1／個 12,000円</div>
+            </div>
+        </div>
+    </div>
+
+
+    </div>
+
+    <h1>スキンケア </h1>
+
+    <div class="item-list" id="skincare-items">
+        <!-- Item 1 -->
+        <div class="item">
+            <img src="https://prospe.net/uploads/product/47015828_1.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">クレンジング オイル【(株)エイチ・アイ・ジー】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?7" class="item-link" target="_blank">オリーブエナジー　薬用ディープクレンジングオイル</a>
+                <div class="item-count">3ml・500／個　20.7円円</div>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="item">
+            <img src="https://prospe.net/uploads/product/47015830_1.jpg" alt="Item 2 Image">
+            <div class="item-details">
+                <div class="item-name">フォーミング ウォッシュ【(株)エイチ・アイ・ジー】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?7" class="item-link" target="_blank">マイルドフォーミングウォッシュ</a>
+                <div class="item-count">3ml・500／個　20.7円</div>
+            </div>
+        </div>
+        
+        <!-- Item 3 -->
+        <div class="item">
+            <img src="https://www.dhc-amenity.com/wp-content/themes/dhc-amenity/img/product/lb_item_05.png" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">エッセンシャル クリーム【(株)エイチ・アイ・ジー】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?7" class="item-link" target="_blank">オリーブバージンオイルエッセンシャルクリーム</a>
+                <div class="item-count">1ml・500／個　20.7円</div>
+            </div>
+        </div>
+
+        <!-- Item 4 -->
+        <div class="item">
+            <img src="https://prospe.net/uploads/product/47015831_1.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">マイルド ローション【(株)エイチ・アイ・ジー】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?7" class="item-link" target="_blank">オリーブエナジー　薬用マイルドローション</a>
+                <div class="item-count">2ml・500／個　20.7円</div>
+            </div>
+        </div>
+
+	<!-- Item 5 -->
+        <div class="item">
+            <img src="https://tshop.r10s.jp/yuyanotemiyage/cabinet/imgrc0156131958.jpg?fitin=720%3A720" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">入浴剤【シンワ(株) 】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page;JSESSIONID_TRADE=e6eff9e3d47da5d9600793041465?0#" class="item-link" target="_blank">入浴剤　湯賛歌6種ｱｿｰﾄ</a>
+                <div class="item-count">25g　6種・600／個 22.5円</div>
+            </div>
+        </div>
+
+    </div>
+
+    <h1>アメニティ</h1>
+
+    <div class="item-list" id="amenity-items">
+        <!-- Item 1 -->
+        <div class="item">
+            <img src="https://makeshop-multi-images.akamaized.net/murayamashop/itemimages/000000004094_SGQjoc6.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">カミソリ【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?9" class="item-link" target="_blank">JsMAYUHANA STYLE ｶﾐｿﾘ ﾆｭｰﾌﾚﾝﾄﾞ3</a>
+                <div class="item-count">1ｹｰｽ1000本 35円</div>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="item">
+            <img src="https://image1.shopserve.jp/daito-onlineshop.com/pic-labo/llimg/schick_shavingcream3.jpg?t=20120302110503" alt="Item 2 Image">
+            <div class="item-details">
+                <div class="item-name">シェービングクリーム【シンワ(株)】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?7" class="item-link" target="_blank">シック　シェービングクリーム３g</a>
+                <div class="item-count">3,000／個　6.5円</div>
+            </div>
+        </div>
+        
+        <!-- Item 3 -->
+        <div class="item">
+            <img src="https://www.daito-inc.co.jp/wp-content/uploads/2019/09/12.png" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">歯ブラシ【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?9" class="item-link" target="_blank">JsMAYUHANA STYLEﾊﾌﾞﾗｼ28穴ｸﾚｰﾙｸﾘｱ4g</a>
+		<a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?9" class="item-link" target="_blank">JsMAYUHANA STYLEﾊﾌﾞﾗｼ28穴ｸﾚｰﾙｸﾘｱ青4g</a>
+		<a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?9" class="item-link" target="_blank">JsMAYUHANA STYLEﾊﾌﾞﾗｼ28穴ｸﾚｰﾙｸﾘｱ桃4g</a>
+                <div class="item-count">1ｹｰｽ　2,000／本　24円</div>
+            </div>
+        </div>
+
+	<!-- It1m 4 -->
+        <div class="item">
+            <img src="https://prospe.net/uploads/product/11132059_1.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ボディタオル【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?6" class="item-link" target="_blank">Js ﾚｼﾞｪﾝﾄﾞSTYLEﾎﾞﾃﾞｨﾀｵﾙ</a>
+                <div class="item-count">1C/S＝500枚入　25円</div>
+            </div>
+        </div>
+
+	<!-- It1m 5 -->
+        <div class="item">
+            <img src="https://m.media-amazon.com/images/I/41Lp0Dqf0VL._AC_UF894,1000_QL80_.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ボディスポンジ【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?6" class="item-link" target="_blank">Jsﾎﾞﾃﾞｨｽﾎﾟﾝｼﾞ30</a>
+                <div class="item-count">1ｹｰｽ4000枚　11円</div>
+            </div>
+        </div>
+
+	<!-- It1m 6 -->
+        <div class="item">
+            <img src="https://www.daito-inc.co.jp/wp-content/uploads/2017/02/1a86bcac0a299a39f1a6d71d9fa03b3d-1200x900.png" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ヘアブラシ【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?6" class="item-link" target="_blank">JsMAYUHANA STYLE 二つ折りｽﾘﾑﾌﾞﾗｼ K 半透明</a>
+                <div class="item-count">1ｹｰｽ1000本　19円</div>
+            </div>
+        </div>
+
+	<!-- It1m 7 -->
+        <div class="item">
+            <img src="https://img06.shop-pro.jp/PA01135/504/product/31912154.jpg?20110820150220" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ヘアバンド【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?10" class="item-link" target="_blank">JsｸﾘｱSTYLE ﾍｱﾊﾞﾝﾄﾞ 5色ｱｿｰﾄ</a>
+                <div class="item-count">3,000／個　6.5円</div>
+            </div>
+        </div>
+
+	<!-- It1m 8 -->
+        <div class="item">
+            <img src="https://image.biccamera.com/img/00000003475699_A01.jpg?sr.dw=600&sr.jqh=60&sr.dh=600&sr.mat=1" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">耳栓【竹内毛織(株)】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?1" class="item-link" target="_blank">送料込み　耳栓　４８００個　パッケージ　中身オレンジ</a>
+                <div class="item-count">1ケース4,800／個　11円</div>
+            </div>
+        </div>
+
+	<!-- It1m 9 -->
+        <div class="item">
+            <img src="https://img.giftmall.co.jp/o/b19d/8b81/b19d8b81-994e-4c59-8a3f-6471788e62bc.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ベビーアメニティ【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?7" class="item-link" target="_blank">お子様ｾｯﾄ　ﾍﾞﾋﾞｰ4点 巾着袋入り</a>
+                <div class="item-count">1ｹｰｽ100個　340円</div>
+            </div>
+        </div>
+
+	<!-- It1m 10 -->
+        <div class="item">
+            <img src="https://m.media-amazon.com/images/I/61QzeSeSh+L._AC_UF894,1000_QL80_.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">キッズアメニティ【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?7" class="item-link" target="_blank">子供用ｾｯﾄ なかよし 巾着袋入り</a>
+                <div class="item-count">1ｹｰｽ150個　220円</div>
+            </div>
+        </div>
+
+	<!-- It1m 11 -->
+        <div class="item">
+            <img src="https://prospe.net/uploads/product/11130658_1.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">綿棒【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?7" class="item-link" target="_blank">Js綿棒001 スタンダード綿棒STD</a>
+                <div class="item-count">1ケース10000本　1円</div>
+            </div>
+        </div>
+
+    </div>
+
+    <h1>ゴミ袋</h1>
+　　
+　　<div class="item-list" id="ゴミ袋-items">
+        <!-- Item 1 -->
+        <div class="item">
+            <img src="https://moro-ichikara.com/upload/save_image/hhj00276_600.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ｺﾞﾐ袋 45L【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?6" class="item-link" target="_blank">ｺﾞﾐ袋 45L　乳白色　半透明　TM49 </a>
+                <div class="item-count">1ｹｰｽ600枚 8.5円</div>
+            </div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="item">
+            <img src="https://img06.shop-pro.jp/PA01176/496/product/59880940.jpg?20130604163939" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ｺﾞﾐ袋 70L【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?6" class="item-link" target="_blank">ｺﾞﾐ袋 70L　乳白色　半透明　TM759</a>
+                <div class="item-count">1ｹｰｽ500枚 15円</div>
+            </div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="item">
+            <img src="https://item-shopping.c.yimg.jp/i/n/ejapan_568-3994" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">空き缶用ゴミ袋【パーチェスワン】</div>
+                <a href="https://catalog.purchaseone.jp/catalog/ProductDetail.aspx?SupplierCompanyId=32&CatalogId=213&PriceId=0&MakerModelID=G-22&IsFromMyCatalog=True&ProductCD=5683994&SnapShotProductID=4331405&ItemId=0" class="item-link" target="_blank">業務用ポリ袋　黄色半透明　４５Ｌ　１パック（１０枚）</a>
+                <div class="item-count">１パック（１０枚） 155円</div>
+            </div>
+        </div>
+
+	<!-- Item 4 -->
+        <div class="item">
+            <img src="https://askul.c.yimg.jp/img/product/3L1/AX57862_3L1.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ｺﾞﾐ袋 黒【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?4" class="item-link" target="_blank">ｻﾆﾀﾘｰ用袋 黒 R-07</a>
+                <div class="item-count">1ｹｰｽ6000枚入 1.8円</div>
+            </div>
+        </div>
+
+	<!-- Item 5 -->
+        <div class="item">
+            <img src="https://askul.c.yimg.jp/img/product/3L1/U457080_3L1.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ポリ袋 15L【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?5" class="item-link" target="_blank">ポリ袋　PR102　15L　半透明</a>
+                <div class="item-count">1ケース3000枚 2円</div>
+            </div>
+        </div>
+
+    </div>
+
+　　<h1>客室用</h1>
+
+　　<div class="item-list" id="客室用-items">
+        <!-- Item 1 -->
+        <div class="item">
+            <img src="https://item-shopping.c.yimg.jp/i/n/ix-ix_sa4580424432473_1" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">水　【(株)アクアライン】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?6" class="item-link" target="_blank">【山梨黒ラベル】ＴＫＰオリジナルウォーター５００ｍｌ</a>
+                <div class="item-count">500ml（24本入）・10／C/S 996円</div>
+            </div>
+        </div>
+
+	<!-- Item 2 -->
+        <div class="item">
+            <img src="https://askul.c.yimg.jp/img/product/3L5/9531300_3L5.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">DD セット用袋【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?7" class="item-link" target="_blank">ﾎﾟﾘｴﾁﾚﾝ袋 小判抜き 白　W350 H500㎜</a>
+                <div class="item-count">1ｹｰｽ600枚 21円</div>
+            </div>
+        </div>
+
+	<!-- Item 3 -->
+        <div class="item">
+            <img src="https://makeshop-multi-images.akamaized.net/gcom1270/itemimages/012005000002.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">シューシャインペーパー【パーチェスワン】</div>
+                <a href="https://catalog.purchaseone.jp/catalog/ProductDetail.aspx?SnapShotProductID=0&CatalogId=231&SupplierCompanyId=4552&ItemId=5682494&ProductCD=FJH-2073&PurchaseHistoryId=7632661&MakerModelID=" class="item-link" target="_blank"> シューシャインペーパー（不織布・白）/FJH </a>
+                <div class="item-count">1ｹｰｽ4000 枚 21,400円</div>
+            </div>
+        </div>
+
+	<!-- Item 4 -->
+        <div class="item">
+            <img src="https://review-shopping.c.yimg.jp/images/tanomail_5619407/0912bf01-873b-45db-8cbb-e9b04dfcd4ad.jpeg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ティッシュ【パーチェスワン】</div>
+                <a href="https://catalog.purchaseone.jp/catalog/ProductDetail.aspx?SupplierCompanyId=4421&CatalogId=231&PriceId=14779345&MakerModelID=&IsFromMyCatalog=True&ProductCD=FJH-2036&SnapShotProductID=5561990&ItemId=5632944" class="item-link" target="_blank">【5ケース～】ハーフティッシュ（クレシア・ハーフ50W）１セット</a>
+                <div class="item-count">1 ケース×96 パック 3,698円</div>
+            </div>
+        </div>
+
+	<!-- Item 5 -->
+        <div class="item">
+            <img src="https://m.media-amazon.com/images/I/415u27wPBSL._AC_UF1000,1000_QL80_.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">トイレットペーパー【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?7" class="item-link" target="_blank">ﾄｲﾚｯﾄﾍﾟｰﾊﾟｰ 個包装 110m ｼﾝｸﾞﾙ </a>
+                <div class="item-count">1ｹｰｽ60個 64円</div>
+            </div>
+        </div>
+
+	<!-- Item 6 -->
+        <div class="item">
+            <img src="https://m.media-amazon.com/images/I/71MIAAojLuL._AC_UF1000,1000_QL80_.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">シャンプー【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?7" class="item-link" target="_blank">花王ｷｭｰｼｬﾝﾌﾟｰ 10L </a>
+                <div class="item-count">1／箱 3,600円</div>
+            </div>
+        </div>
+
+	<!-- Item 7 -->
+        <div class="item">
+            <img src="https://item-shopping.c.yimg.jp/i/n/osakashopkira2_1189" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">コンディショナー【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?7" class="item-link" target="_blank">ｺﾝﾃﾞｨｼｮﾅｰ 花王 ｷｭｰ 10L</a>
+                <div class="item-count">1／箱 3,600円</div>
+            </div>
+        </div>
+
+	<!-- Item 8 -->
+        <div class="item">
+            <img src="https://pro.kao.com/content/dam/sites/kao/pro-kao-com/jp/ja/products/kps12/25604517/GG01.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ボディソープ【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?7" class="item-link" target="_blank">ﾎﾞﾃﾞｨｰｿｰﾌﾟ 花王 ｷｭｰ 10L</a>
+                <div class="item-count">1／箱 3,600円</div>
+            </div>
+        </div>
+
+	<!-- Item 9 -->
+        <div class="item">
+            <img src="https://m.media-amazon.com/images/I/81lw9P+-OxL.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ハンドソープ【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?7" class="item-link" target="_blank">花王ﾊﾝﾄﾞｿｰﾌﾟ　ﾌｨｴｽﾀ　洗顔手洗いﾌｫｰﾑ　2L</a>
+                <div class="item-count">1C/S＝3本入り 1,340円</div>
+            </div>
+        </div>
+
+	<!-- Item 10 -->
+        <div class="item">
+            <img src="https://shop.r10s.jp/auc-nontarou/cabinet/k8-00001.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">リセッシュ【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?3" class="item-link" target="_blank">消臭剤　リセッシュ　花王　10L</a>
+                <div class="item-count">1／箱 5,800円</div>
+            </div>
+        </div>
+
+	<!-- Item 11 -->
+        <div class="item">
+            <img src="https://makeshop-multi-images.akamaized.net/gcom1270/itemimages/000000001325_JHqIaHV.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ランドリー用袋【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?3" class="item-link" target="_blank">ﾗﾝﾄﾞﾘｰﾊﾞｯｸﾞ 青文字 乳白 450×550×0.03mm</a>
+                <div class="item-count">1ｹｰｽ2000枚 8.2円</div>
+            </div>
+        </div>
+
+	<!-- Item 12 -->
+        <div class="item">
+            <img src="https://pro.kao.com/content/dam/sites/kao/pro-kao-com/jp/ja/products/kps17/25699639/GG01.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">リセッシュ 入れ物【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?3" class="item-link" target="_blank">リセッシュ　除菌EX業務用詰替容器BJ ﾋﾞｭｰﾃｨﾌﾙｼﾞｬﾊﾟﾝ　325ml</a>
+                <div class="item-count">1C/S＝12個入 150円</div>
+            </div>
+        </div>
+
+	<!-- Item 13 -->
+        <div class="item">
+            <img src="https://makeshop-multi-images.akamaized.net/ubic/itemimages/003005000096_cdziaYV.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ポーラ シャンプー【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?16" class="item-link" target="_blank">ポーラ　エステロワイエ　シャンプー10L</a>
+                <div class="item-count">10L・1／箱 5,680円</div>
+            </div>
+        </div>
+
+	<!-- Item 14 -->
+        <div class="item">
+            <img src="https://fukusho-amenity.com/wp-content/uploads/2023/11/free_1699958896641.jpg.webp" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ポーラ コンディショナー【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?16" class="item-link" target="_blank">ポーラ　エステロワイエ　コンディショナー10L</a>
+                <div class="item-count">10L・1／箱 5,680円</div>
+            </div>
+        </div>
+
+	<!-- Item 15 -->
+        <div class="item">
+            <img src="https://makeshop-multi-images.akamaized.net/ubic/itemimages/0120000000052_GS5h01k.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ポーラ ボディソープ【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?16" class="item-link" target="_blank">ポーラ　エステロワイエ　ボディソープ10L</a>
+                <div class="item-count">10L・1／箱 5,680円</div>
+            </div>
+        </div>
+
+	<!-- Item 16 -->
+        <div class="item">
+            <img src="https://shop.r10s.jp/ichitou1856/cabinet/08799471/compass1694846242.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ﾊﾞｽﾏｼﾞｯｸﾘﾝ【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?16" class="item-link" target="_blank">花王ﾊﾞｽﾏｼﾞｯｸﾘﾝ業務用 10L</a>
+                <div class="item-count">1／箱 3,200円</div>
+            </div>
+        </div>
+
+    </div>
+
+　　<h1>その他</h1>
+
+　　<div class="item-list" id="その他-items">
+        <!-- Item 1 -->
+        <div class="item">
+            <img src="https://www.syokusai-net.com/upload/product_main_large/3/14483_1599109849.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ペーパータオル　【(株)カネミツ産業】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?9" class="item-link" target="_blank">ｴﾙｳﾞｪｰﾙ ﾍﾟｰﾊﾟｰﾀｵﾙ ｴｺｽﾏｰﾄ　中判　200枚入</a>
+                <div class="item-count">1／PC 110円</div>
+            </div>
+        </div>
+
+	<!-- Item 2 -->
+        <div class="item">
+            <img src="https://m.media-amazon.com/images/I/41PUZVNqykL._AC_SL1000_.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">リパックトナー　LB112B【ケイティケイ(株)】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?3" class="item-link" target="_blank">リパックトナー　LB112B</a>
+                <div class="item-count">1個 9,680円</div>
+            </div>
+        </div>
+
+	<!-- Item 3 -->
+        <div class="item">
+            <img src="https://th.bing.com/th/id/OIP.7RyBcTcy05ylVwwKfQ6lGQAAAA?rs=1&pid=ImgDetMain" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">ドラムカートリッジ　LB112【ケイティケイ(株)】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?3" class="item-link" target="_blank">ドラムカートリッジ　LB112</a>
+                <div class="item-count">1個 21,850円</div>
+            </div>
+        </div>
+
+	<!-- Item 4 -->
+        <div class="item">
+            <img src="https://image1.shopserve.jp/miyaco.jp/pic-labo/2194581.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">リパックトナー LB321M【ケイティケイ(株)】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?3" class="item-link" target="_blank">リパックトナー LB321M</a>
+                <div class="item-count">1個 12,100円</div>
+            </div>
+        </div>
+
+	<!-- Item 5 -->
+        <div class="item">
+            <img src="https://m.media-amazon.com/images/I/511vkRT3RHL._AC_SX569_.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">リパックドラム LB321【ケイティケイ(株)】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?3" class="item-link" target="_blank">リパックドラム LB321</a>
+                <div class="item-count">1個 8,940円</div>
+            </div>
+        </div>
+
+	<!-- Item 6 -->
+        <div class="item">
+            <img src="https://askul.c.yimg.jp/img/product/3L1/542680_3L1.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">A4　紙　【ASKUL】</div>
+                <a href="https://solution.soloel.com/p/542680/" class="item-link" target="_blank">コピー用紙　マルチペーパー　スーパーホワイト</a>
+                <div class="item-count">5000枚：500枚入×10冊 3,552円</div>
+            </div>
+        </div>
+
+	<!-- Item 7 -->
+        <div class="item">
+            <img src="https://askul.c.yimg.jp/img/product/3L1/1248663_3L1.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">A5　紙　【ASKUL】</div>
+                <a href="https://solution.soloel.com/p/1248663/" class="item-link" target="_blank">コピー用紙　マルチペーパー　スーパーホワイト</a>
+                <div class="item-count">5000枚：500枚入×10冊 2,581円</div>
+            </div>
+        </div>
+
+	<!-- Item 8 -->
+        <div class="item">
+            <img src="https://askul.c.yimg.jp/img/product/3L1/U629661_3L1.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">傘　【シンワ(株)】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?5" class="item-link" target="_blank">ﾋﾞﾆｰﾙ傘FRP骨ﾌﾞﾗｯｸ 65cm 115-065 </a>
+                <div class="item-count">1ロット60本・60／本 325円</div>
+            </div>
+        </div>
+
+	<!-- Item 9 -->
+        <div class="item">
+            <img src="https://item-shopping.c.yimg.jp/i/n/soukai_4972759514977" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">傘袋　【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?5" class="item-link" target="_blank">傘袋　半透明200P　HD200</a>
+                <div class="item-count">1ケース3000枚 1.4円</div>
+            </div>
+        </div>
+
+	<!-- Item 10 -->
+        <div class="item">
+            <img src="https://thumbnail.image.rakuten.co.jp/@0_mall/wanoevent/cabinet/01364865/197201.jpg" alt="Item 1 Image">
+            <div class="item-details">
+                <div class="item-name">浴衣帯　【(株)ＪＴＢ商事】</div>
+                <a href="https://www2.infomart.co.jp/trade/order_my_catalog.page?5" class="item-link" target="_blank">浴衣帯 平帯 OB-3776　紺</a>
+                <div class="item-count">巾5㎝×240㎝ 180円</div>
+            </div>
+        </div>
+
+　　</div>
+  
+  	<footer>
+        <div class="footer-content">
+            <p>TKP SUNLIFE HOTEL</p>
+            <p>発注書 ✷infomart.co.jp (月、木　のみ) ✷【ASKUL】カート入り</p>
+        </div>
+    </footer>
+
+    <script>
+    function showCategory(category) {
+        // Hide all item lists
+        document.getElementById('coffee-items').style.display = 'none';
+        document.getElementById('skincare-items').style.display = 'none';
+        document.getElementById('amenity-items').style.display = 'none';
+		document.getElementById('ゴミ袋-items').style.display = 'none';
+	　　document.getElementById('客室用-items').style.display = 'none';
+	　　document.getElementById('その他-items').style.display = 'none';
+        // Show the selected item list
+        document.getElementById(category + '-items').style.display = 'flex';
+    }
+    
+    </script>
+</body>
+</html>
